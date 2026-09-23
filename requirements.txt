@@ -1,0 +1,10 @@
+streamlit>=1.40
+tensorflow>=2.16
+pillow>=10.0
+numpy>=1.26
+streamlit
+tensorflow
+numpy
+pandas
+pillow
+split-folders

@@ -1,0 +1,164 @@
+@import url("https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Public+Sans:wght@400;500;600&display=swap");
+
+:root {
+  --ink: #14202b;
+  --slate: #586974;
+  --paper: #eef1f3;
+  --panel: #ffffff;
+  --line: #d5dce1;
+  --film: #0b1116;
+  --clear: #0e6e73;
+  --clear-bg: #dcefef;
+  --clear-line: #a9d3d4;
+  --alert: #b3203f;
+  --alert-bg: #f9e1e6;
+  --alert-line: #e7b4bf;
+}
+
+.stApp { background: var(--paper); color: var(--ink); }
+.stApp, .stApp p, .stApp label, .stApp li, .stApp button, .stApp input, .stApp textarea {
+  font-family: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+.stApp .block-container { max-width: 1120px; padding-top: 2.5rem; }
+footer { visibility: hidden; }
+
+/* Header — MRI-photo banner behind the title */
+.stApp .masthead {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  min-height: 210px;
+  display: flex;
+  align-items: flex-end;
+}
+.stApp .masthead__img {
+  position: absolute; inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(0.15) brightness(0.9);
+}
+.stApp .masthead__overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(100deg, rgba(20,32,43,0.94) 20%, rgba(20,32,43,0.72) 58%, rgba(20,32,43,0.2) 100%);
+}
+.stApp .masthead__content { position: relative; padding: 1.6rem 1.9rem; max-width: 640px; }
+.stApp .masthead__eyebrow {
+  display: inline-block;
+  font-family: "Public Sans", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #eef1f3;
+  background: rgba(255,255,255,0.14);
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  margin-bottom: 0.6rem;
+}
+.stApp .masthead h1 {
+  font-family: "Newsreader", Georgia, "Times New Roman", serif;
+  font-size: clamp(1.9rem, 3.6vw, 2.6rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: #f4f6f7;
+  margin: 0 0 0.4rem;
+  padding: 0;
+}
+.stApp .masthead p { color: #cdd6db; font-size: 1.02rem; max-width: 58ch; margin: 0; }
+
+/* The scan sits on a dark "film" surface, like a light box */
+.stApp .st-key-film { background: var(--film); padding: 14px; border-radius: 6px; }
+.stApp .st-key-film img { width: 100%; height: auto; display: block; border-radius: 2px; }
+.stApp .st-key-film [data-testid="stImageCaption"] { color: #9fb0bc; font-size: 0.85rem; text-align: left; }
+
+/* Empty state */
+.stApp .empty {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  border: 1px dashed #b7c2ca;
+  border-radius: 6px;
+  padding: 1.3rem 1.4rem;
+  color: var(--slate);
+  background: rgba(255, 255, 255, 0.5);
+}
+.stApp .empty img {
+  width: 88px; height: 88px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+  border: 1px solid var(--line);
+}
+.stApp .empty strong { display: block; color: var(--ink); font-size: 1.1rem; margin-bottom: 0.25rem; }
+
+/* Verdict */
+.stApp .verdict { border: 1px solid var(--line); border-radius: 6px; padding: 1.1rem 1.25rem; background: var(--panel); }
+.stApp .verdict--clear { background: var(--clear-bg); border-color: var(--clear-line); }
+.stApp .verdict--tumor { background: var(--alert-bg); border-color: var(--alert-line); }
+.stApp .verdict__title {
+  font-family: "Newsreader", Georgia, "Times New Roman", serif;
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.15;
+  margin: 0;
+  padding: 0;
+}
+.stApp .verdict--clear .verdict__title { color: #0a5256; }
+.stApp .verdict--tumor .verdict__title { color: #8a1630; }
+.stApp .verdict__note { margin: 0.4rem 0 0; color: var(--ink); max-width: 52ch; }
+
+/* Probability gauge with the threshold marked on it */
+.stApp .gauge { margin-top: 1.5rem; }
+.stApp .gauge__track { position: relative; height: 14px; background: #dde3e8; border-radius: 3px; }
+.stApp .gauge__fill { height: 100%; border-radius: 3px; }
+.stApp .gauge__fill--clear { background: var(--clear); }
+.stApp .gauge__fill--tumor { background: var(--alert); }
+.stApp .gauge__tick {
+  position: absolute;
+  top: -5px;
+  bottom: -5px;
+  width: 2px;
+  background: var(--ink);
+  transform: translateX(-1px);
+}
+.stApp .gauge__scale {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  height: 1.3rem;
+  margin-top: 0.6rem;
+  font-size: 0.85rem;
+  color: var(--slate);
+}
+.stApp .gauge__tick-label { position: absolute; transform: translateX(-50%); color: var(--ink); white-space: nowrap; }
+
+/* Per-class scores */
+.stApp .classes__title { margin: 1.75rem 0 0.5rem; font-weight: 600; }
+.stApp .classes { list-style: none; margin: 0; padding: 0; }
+.stApp .classes__row {
+  display: grid;
+  grid-template-columns: 7.5rem 1fr 3.5rem;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.3rem 0;
+  margin: 0;
+  color: var(--slate);
+}
+.stApp .classes__row--top { color: var(--ink); font-weight: 600; }
+.stApp .classes__bar { display: block; height: 8px; background: #dde3e8; border-radius: 3px; overflow: hidden; }
+.stApp .classes__fill { display: block; height: 100%; border-radius: 3px; }
+.stApp .classes__fill--clear { background: var(--clear); }
+.stApp .classes__fill--tumor { background: var(--alert); }
+.stApp .classes__pct { text-align: right; font-variant-numeric: tabular-nums; }
+
+/* Fine print */
+.stApp .fineprint {
+  color: var(--slate);
+  font-size: 0.875rem;
+  max-width: 70ch;
+  margin-top: 2.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+}
